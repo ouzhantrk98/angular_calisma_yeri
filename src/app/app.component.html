@@ -4,7 +4,7 @@
 
       <h3 class="bg-primary text-white p3">
 
-        {{ user }} To do List
+        {{ getName() }} To do List
 
       </h3>
 
@@ -23,9 +23,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of items">
+          <tr *ngFor="let item of getItems(); let i = index">
+            <td>{{ i+1 }}</td>
             <td>{{ item.description }}</td>
-            <td>{{ item.action }}</td>
+            <td [ngSwitch]="item.action">
+
+                <span *ngSwitchCase=true>
+                    Evet
+                </span>
+                <span *ngSwitchCase=false>
+                    Hayır
+                </span>
+            </td>
           </tr>
         </tbody>
 
