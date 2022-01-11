@@ -9,13 +9,16 @@ import { Model,toDoItem} from './model';
 export class AppComponent {
   title = 'toDo';
   model = new Model();
-
+  isDisplay = false;
 
   getName(){
     return this.model.user;
   }
 
   getItems(){
+    if(this.isDisplay){
+      return this.model.items;
+    }
     return this.model.items.filter(item => !item.action);
   }
 
